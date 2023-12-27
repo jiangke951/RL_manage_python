@@ -37,6 +37,59 @@ CREATE TABLE `test`(
 `create_name` VARCHAR(255) NOT NULL,            #创建用户名
 `test_name` VARCHAR(255)  NOT NULL,        #实验名
 `test_status` VARCHAR(255) NOT NULL,        #状态: 正常 | 封禁
-`create_time` VARCHAR(255) NULL,        #创建时间
-`update_time` VARCHAR(255) NULL            #更新时间
+`create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,        #创建时间
+`update_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP            #更新时间
 );
+#历史实验表
+CREATE TABLE `test_detail` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `parent_id` varchar(255) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `create_name` varchar(255) NOT NULL,
+  `test_name` varchar(255) NOT NULL,
+  `test_status` varchar(255) NOT NULL,
+  `seed` varchar(255) NOT NULL,
+  `env_id` varchar(255) NOT NULL,
+  `learning_rate` varchar(255) NOT NULL,
+  `input_size` varchar(255) NOT NULL,
+  `info` varchar(255) NOT NULL,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+
+#历史实验表
+CREATE TABLE `test_detail` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `parent_id` varchar(255) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `create_name` varchar(255) NOT NULL,
+  `test_name` varchar(255) NOT NULL,
+  `test_status` varchar(255) NOT NULL,
+  `seed` varchar(255) NOT NULL,
+  `env_id` varchar(255) NOT NULL,
+  `learning_rate` varchar(255) NOT NULL,
+  `input_size` varchar(255) NOT NULL,
+  `info` varchar(255) NOT NULL,
+  `episode` int NOT NULL ,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+#实验表数据表（）
+CREATE TABLE `datas`(
+`id` INT PRIMARY KEY AUTO_INCREMENT,        #datas的唯一标识
+`test_detail_id` INT NOT NULL,        #test_detail的唯一标识
+`episode_id` INT NOT NULL,
+`shap` VARCHAR(255) NOT NULL,        #shap值
+`movement_decision` VARCHAR(255) NOT NULL,        #动作选择
+`qvalue` text NOT NULL,       #Q值函数
+`value_function` VARCHAR(255) NOT NULL,        #价值函数
+`reward_signal` VARCHAR(255) NOT NULL,        #奖励信号
+`learning_curve` VARCHAR(255) NOT NULL        #学习曲线
+);
+

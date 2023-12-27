@@ -47,4 +47,8 @@ def create_app():
     app.register_blueprint(frontreserveapp)
     from controller.fronttest import fronttestapp
     app.register_blueprint(fronttestapp)
+    from controller.frontshap import frontshapapp
+    app.register_blueprint(frontshapapp)
+    from controller.frontecharts import frontechartsapp
+    app.register_blueprint(frontechartsapp)
     return app

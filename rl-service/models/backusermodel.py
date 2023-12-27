@@ -41,9 +41,9 @@ class BackUser(db.Model):  # 创建的类对应数据库的表以及对表的相
     def get_user_list(self, page_no, page_size, account, username, user_status): # 查询用户列表
         query_user = None
         if user_status == user_status_all:
-            query_user = db.session.query(BackUser).filter(BackUser.identity==user_identity_user).filter(BackUser.account.like(f'%{account}%')).filter(BackUser.username.like(f'%{username}%')).order_by(BackUser.id.desc()).paginate(page=page_no, per_page=page_size)
+            query_user = db.session.query(BackUser).filter(BackUser.identity==user_identity_user).filter(BackUser.account.like(f'%{account}%')).filter(BackUser.username.like(f'%{username}%')).order_by(BackUser.id.desc()).paginate(page=page_no, per_page=page_size).items
         else:
-            query_user = db.session.query(BackUser).filter(BackUser.identity==user_identity_user).filter(BackUser.user_status == user_status).filter(BackUser.account.like(f'%{account}%')).filter(BackUser.username.like(f'%{username}%')).order_by(BackUser.id.desc()).paginate(page=page_no, per_page=page_size)
+            query_user = db.session.query(BackUser).filter(BackUser.identity==user_identity_user).filter(BackUser.user_status == user_status).filter(BackUser.account.like(f'%{account}%')).filter(BackUser.username.like(f'%{username}%')).order_by(BackUser.id.desc()).paginate(page=page_no, per_page=page_size).items
         userlist = []
         login_time = ''
         for user in query_user:

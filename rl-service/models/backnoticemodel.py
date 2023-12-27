@@ -31,7 +31,7 @@ class BackNotice(db.Model):
 
     @classmethod
     def get_notice_list(self, page_no, page_size, notice_title): # 查询通知列表
-        query_notice = db.session.query(BackNotice).filter(BackNotice.is_delete==notice_isdel_no).filter(BackNotice.notice_title.like(f'%{notice_title}%')).order_by(BackNotice.id.desc()).paginate(page=page_no, per_page=page_size)
+        query_notice = db.session.query(BackNotice).filter(BackNotice.is_delete==notice_isdel_no).filter(BackNotice.notice_title.like(f'%{notice_title}%')).order_by(BackNotice.id.desc()).paginate(page=page_no, per_page=page_size).items
         noticelist = []
         for notice in query_notice:
             noticelist.append({'notice_id': notice.id, 'notice_title': notice.notice_title, 'notice_detail': notice.notice_detail, 'create_time': notice.create_time})
