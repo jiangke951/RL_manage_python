@@ -124,7 +124,7 @@ def get_test_detail():
     if page_no == 0 or page_size == 0: return send_cc('无效参数')
     # 查询实验列表
     testlist = TestDetail().get_test_detail(page_no, page_size, test_name, user_name, test_status, parent_id)
-    # print(testlist)
+    print(testlist)
     # 获取全部用户数量
     test_count = FrontTest.get_test_count(test_name, user_name, test_status)
     return send_data({'status': 0, 'msg': '查询实验列表成功', 'data': testlist, 'test_count': test_count})

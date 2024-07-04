@@ -15,7 +15,7 @@ class FrontTest(db.Model):  # 创建的类对应数据库的表以及对表的�
         # 获取当前时间为创建时间
         create_time = get_cur_time()
         update_time = create_time
-        testinfo = FrontTest(test_name=test_name, user_name=user_name,test_status=test_status,create_time=create_time,update_time=update_time, create_name = create_name )
+        testinfo = FrontTest(test_name=test_name, user_name=user_name,test_status=test_status,create_time=create_time,update_time=update_time, create_name = create_name)
         db.session.add(testinfo)
         db.session.commit()
 
@@ -32,7 +32,7 @@ class FrontTest(db.Model):  # 创建的类对应数据库的表以及对表的�
         for test in query_test:
             create_time = test.create_time.strftime("%Y-%m-%d %H:%M:%S")
             # testlist.append({'test_id': test.id, 'user_name': test.user_name, 'test_name': test.test_name, 'test_status': test.test_status, 'create_time': create_time,'seed': test.seed,'env_id': test.env_id,'learning_rate': test.learning_rate,'input_size': test.input_size,'info': test.info})
-            testlist.append({'test_id': test.id, 'user_name': test.user_name, 'test_name': test.test_name, 'test_status': test.test_status, 'create_time': create_time})
+            testlist.append({'test_id': test.id, 'user_name': test.user_name, 'test_name': test.test_name, 'test_status': test.test_status, 'create_time': create_time, 'hyperparameters': test.hyperparameters})
 
         # print(testlist)
         return testlist

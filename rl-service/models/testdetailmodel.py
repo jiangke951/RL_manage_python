@@ -19,8 +19,7 @@ class TestDetail(db.Model):  # 创建的类对应数据库的表以及对表的�
         # print(query_test)
         for test in query_test:
             create_time = test.create_time.strftime("%Y-%m-%d %H:%M:%S")
-            testlist.append({'test_id': test.id, 'user_name': test.user_name, 'test_name': test.test_name, 'test_status': test.test_status, 'create_time': create_time,'seed': test.seed,'env_id': test.env_id,'learning_rate': test.learning_rate,'input_size': test.input_size,'info': test.info,'episode': test.episode})
+            testlist.append({'test_id': test.id, 'user_name': test.user_name, 'test_name': test.test_name, 'test_status': test.test_status, 'create_time': create_time,'seed': test.seed,'env_id': test.env_id,'learning_rate': test.learning_rate,'input_size': test.input_size,'info': test.info,'episode': test.episode,'episode': test.episode,'hyperparameters': test.hyperparameters})
         # print(testlist)
         return testlist
-
 
