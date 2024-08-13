@@ -213,6 +213,9 @@ def send_feedback():
     if ret: return send_cc('反馈已提交', 0)
     else: return send_cc('提交失败')
 
+@userapp.route('/api/hello', methods=['get'])
+def hello():
+    return 'Hello'
 
 # if __name__ == '__main__':
 #     user_login()

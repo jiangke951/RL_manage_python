@@ -129,3 +129,12 @@ def get_test_detail():
     test_count = FrontTest.get_test_count(test_name, user_name, test_status)
     return send_data({'status': 0, 'msg': '查询实验列表成功', 'data': testlist, 'test_count': test_count})
 
+@fronttestapp.route('/api/front/test/sendForm', methods=['post'])
+def send_form():
+    # 获取客户端发来的表单信息
+    print("724")
+    file = request.files['file']
+    print(file)
+    return send_data({'status': 0, 'msg': '成功'})
+
+    # return send_data({'status': 0, 'msg': '成功', 'data': testlist, 'test_count': test_count})
